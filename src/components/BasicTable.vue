@@ -8,7 +8,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="row in dataList" :key="row.key">
+        <tr
+          v-for="row in dataList"
+          :key="row.key"
+          @click="$emit('rowClick', row)"
+        >
+          <!-- 使用 $emit向上触发事件 -->
           <td v-for="c in cols" :key="c.key">{{ row[c.key] }}</td>
         </tr>
       </tbody>
@@ -35,8 +40,15 @@ type BasicTableProps = {
   dataList: any[];
   cols: ColType[];
 };
+type BasicTableEmits = {
+  // 方法类型的定义
+  rowClick: (rowValue: any) => void;
+};
+// 定义属性
 const p = defineProps<BasicTableProps>();
 console.log(p.cols); // 获取属性值
+// 定义事件
+defineEmits<BasicTableEmits>();
 
 const title = ref('');
 function setTitle(str: string) {

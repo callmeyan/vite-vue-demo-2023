@@ -50,6 +50,10 @@ const xxx = ref();
 function setFirstTableTitle() {
   xxx.value.setTitle(new Date().toString());
 }
+function rowClick(row: any) {
+  // 组件点击行的时候
+  console.log(row);
+}
 </script>
 
 <template>
@@ -62,7 +66,7 @@ function setFirstTableTitle() {
         <button @click="setFirstTableTitle">setFirstTableTitle</button>
       </h1>
       <BasicTable ref="xxx" :dataList="dataList" :cols="cols" />
-      <BasicTable :dataList="dataList" :cols="cols" />
+      <BasicTable :dataList="dataList" :cols="cols" @rowClick="rowClick" />
     </div>
   </div>
 </template>
