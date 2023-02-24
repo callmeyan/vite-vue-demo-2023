@@ -46,6 +46,10 @@ function addRow() {
     key: String(keyIndex.value++),
   });
 }
+const xxx = ref();
+function setFirstTableTitle() {
+  xxx.value.setTitle(new Date().toString());
+}
 </script>
 
 <template>
@@ -55,8 +59,9 @@ function addRow() {
       <h1>
         {{ counter.count }} <button @click="counter.increment">count ++</button>
         <button @click="addRow">add</button>
+        <button @click="setFirstTableTitle">setFirstTableTitle</button>
       </h1>
-      <BasicTable :dataList="dataList" :cols="cols" />
+      <BasicTable ref="xxx" :dataList="dataList" :cols="cols" />
       <BasicTable :dataList="dataList" :cols="cols" />
     </div>
   </div>

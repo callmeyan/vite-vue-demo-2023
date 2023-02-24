@@ -1,5 +1,6 @@
 <template>
   <div class="basic-table">
+    <h1>{{ title }}</h1>
     <table>
       <thead>
         <tr>
@@ -16,6 +17,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 // js的使用
 // defineProps({
 //   dataList: Array,
@@ -35,10 +37,22 @@ type BasicTableProps = {
 };
 const p = defineProps<BasicTableProps>();
 console.log(p.cols); // 获取属性值
+
+const title = ref('');
+function setTitle(str: string) {
+  title.value = str;
+}
+defineExpose({ setTitle });
 </script>
 
 <style>
 .basic-table {
+}
+.basic-table h1 {
+  background: #f00;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
 }
 table {
   width: 100%;
