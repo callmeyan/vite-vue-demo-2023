@@ -15,7 +15,27 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+// js的使用
+// defineProps({
+//   dataList: Array,
+//   cols: {
+//     type: Array,
+//     required: true,
+//   },
+// });
+// ts限制类型
+type ColType = {
+  title: string;
+  key: string;
+};
+type BasicTableProps = {
+  dataList: any[];
+  cols: ColType[];
+};
+const p = defineProps<BasicTableProps>();
+console.log(p.cols); // 获取属性值
+</script>
 
 <style>
 .basic-table {
